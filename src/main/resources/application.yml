@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        hikari:
+            connectionTimeout: 20000
+            maximumPoolSize: 5
+        password:
+        url: jdbc:postgresql://localhost:5432/jibledb
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
