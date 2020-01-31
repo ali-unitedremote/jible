@@ -1,12 +1,14 @@
 package com.unitedremote.bootcamp.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.unitedremote.bootcamp.models.Skhera;
 import com.unitedremote.bootcamp.repositories.SkheraRepository;
+import com.unitedremote.bootcamp.repositories.UserRepository;
 
 @Service
 public class SkheraDao {
@@ -14,6 +16,9 @@ public class SkheraDao {
 	@Autowired
 	SkheraRepository skheraRepository;
 	
+	@Autowired
+	UserRepository userRepository;
+
 	public Skhera save(Skhera skhera) {
 		return skheraRepository.save(skhera);
 	}
@@ -22,8 +27,13 @@ public class SkheraDao {
 		return skheraRepository.findAll();
 	}
 	
-	public Skhera findOne(Long id) {
-		return skheraRepository.getOne(id);
+	public Optional<Skhera> findOne(Long id) {
+		return skheraRepository.findById(id);
+	}
+	
+	public Skhera getOne(Long id) {
+		Skhera skhera = skheraRepository.getOne(id);
+		return skhera;
 	}
 	
 	public void delete(Skhera skhera) {

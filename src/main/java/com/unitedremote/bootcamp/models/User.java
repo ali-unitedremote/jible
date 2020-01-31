@@ -5,42 +5,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Long id;
 	@Column
-	private String role;
+	protected String name;
 	@Column
-	private Long facebookId;
+	protected String email;
+
+	public String getEmail() {
+		return email;
+	}
 
 	public Long getId() {
 		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public Long getFacebookId() {
-		return facebookId;
-	}
-
-	public void setFacebookId(Long facebookId) {
-		this.facebookId = facebookId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

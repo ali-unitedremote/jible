@@ -2,14 +2,18 @@ package com.unitedremote.bootcamp.models;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -27,22 +31,52 @@ public class Skhera {
 	@Column
 	private double estimated_price;
 	@Column
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date scheduledDate;
 	@Column
 	private boolean asap;
+	@Column
+	private boolean ableToShare;
 	@Column
 	private String addressFrom;
 	@Column
 	private String addressTo;
 	@Column
-	private String skheraState;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+	private Date pickedUpAt;
+	@Column
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+	private Date deliveredAt;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private User rider;
-	@ManyToOne(cascade = CascadeType.ALL)
-	private User Customer;
+	public Date getPickedUpAt() {
+		return pickedUpAt;
+	}
+
+	public void setPickedUpAt(Date pickedUpAt) {
+		this.pickedUpAt = pickedUpAt;
+	}
+
+	public Date getDeliveredAt() {
+		return deliveredAt;
+	}
+
+	public void setDeliveredAt(Date deliveredAt) {
+		this.deliveredAt = deliveredAt;
+	}
 	
+	//Relationships
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "rider_id", nullable = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Rider rider;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Customer customer;
+
+	
+	//getters & Setters
 	public Long getId() {
 		return id;
 	}
@@ -79,6 +113,13 @@ public class Skhera {
 	public void setAsap(boolean asap) {
 		this.asap = asap;
 	}
+	public boolean isAbleToShare() {
+		return ableToShare;
+	}
+	public void setAbleToShare(boolean ableToShare) {
+		this.ableToShare = ableToShare;
+	}
+	
 	public String getAddressFrom() {
 		return addressFrom;
 	}
@@ -88,27 +129,19 @@ public class Skhera {
 	public String getAddressTo() {
 		return addressTo;
 	}
+	public void setRider(Rider rider) {
+		this.rider = rider;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	public void setAddressTo(String addressTo) {
 		this.addressTo = addressTo;
 	}
-	public String getSkheraState() {
-		return skheraState;
-	}
-	public void setSkheraState(String skheraState) {
-		this.skheraState = skheraState;
-	}
-	public User getRider() {
+	public Rider getRider() {
 		return rider;
 	}
-	public void setRider(User rider) {
-		this.rider = rider;
+	public Customer getCustomer() {
+		return customer;
 	}
-	public User getCustomer() {
-		return Customer;
-	}
-	public void setCustomer(User customer) {
-		Customer = customer;
-	}
-	
-	
 }
