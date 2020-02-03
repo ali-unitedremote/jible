@@ -1,6 +1,7 @@
 package com.unitedremote.bootcamp.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,24 @@ public class SkheraService {
 	@Autowired
 	SkheraDao skheraDao;
 	
-	public Skhera setRider(Rider rider, Skhera skhera) {
-		skhera.setRider(rider);
-		return skheraDao.save(skhera);	
+	public List<Skhera> findAll() {
+		return skheraDao.findAll();
+	}
+	
+	public Skhera findOne(Long id) {
+		return skheraDao.findOne(id).get();
+	}
+	
+	public Skhera saveSkhera(Skhera skhera){
+		return skheraDao.save(skhera);
+	}
+	
+	public void deleteSkhera(Skhera skhera) {
+		skheraDao.delete(skhera);
+	}
+	
+	public void setRider(Skhera skhera, Rider rider){
+		 skhera.setRider(rider);
 	}
 	
 	public Skhera pickupSkhera(Skhera skhera, Date date) {

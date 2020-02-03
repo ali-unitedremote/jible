@@ -1,5 +1,7 @@
 package com.unitedremote.bootcamp.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class CustomerDao {
 	
 	public Customer save(Customer customer) {
 		return customerRepository.save(customer);
+	}
+	
+	public List<Customer> findAll() {
+		return customerRepository.findAll();
 	}
 
 }

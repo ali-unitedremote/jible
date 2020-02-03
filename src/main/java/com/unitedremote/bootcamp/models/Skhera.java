@@ -48,22 +48,6 @@ public class Skhera {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date deliveredAt;
 	
-	public Date getPickedUpAt() {
-		return pickedUpAt;
-	}
-
-	public void setPickedUpAt(Date pickedUpAt) {
-		this.pickedUpAt = pickedUpAt;
-	}
-
-	public Date getDeliveredAt() {
-		return deliveredAt;
-	}
-
-	public void setDeliveredAt(Date deliveredAt) {
-		this.deliveredAt = deliveredAt;
-	}
-	
 	//Relationships
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "rider_id", nullable = true)
@@ -118,6 +102,22 @@ public class Skhera {
 	}
 	public void setAbleToShare(boolean ableToShare) {
 		this.ableToShare = ableToShare;
+	}
+
+	public Date getPickedUpAt() {
+		return pickedUpAt;
+	}
+
+	public void setPickedUpAt(Date pickedUpAt) {
+		this.pickedUpAt = pickedUpAt;
+	}
+
+	public Date getDeliveredAt() {
+		return deliveredAt;
+	}
+
+	public void setDeliveredAt(Date deliveredAt) {
+		this.deliveredAt = deliveredAt;
 	}
 	
 	public String getAddressFrom() {

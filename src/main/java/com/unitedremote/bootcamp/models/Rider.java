@@ -1,23 +1,19 @@
 package com.unitedremote.bootcamp.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity  
 @Table(name="riders")  
-@PrimaryKeyJoinColumn(name="riderId")
+@PrimaryKeyJoinColumn(name="rider_id")
 public class Rider extends User{
-
-	@Column  
-	private String position;
-
-	public String getPosition() {
-		return position;
+	
+	public Rider() {
 	}
-
-	public void setPosition(String position) {
-		this.position = position;
+	
+	public Rider(Long id, String name, String email) {
+		super(id, name, email);
 	}
+	
 }

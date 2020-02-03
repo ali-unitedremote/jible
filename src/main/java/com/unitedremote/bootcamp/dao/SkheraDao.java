@@ -8,16 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.unitedremote.bootcamp.models.Skhera;
 import com.unitedremote.bootcamp.repositories.SkheraRepository;
-import com.unitedremote.bootcamp.repositories.UserRepository;
 
 @Service
 public class SkheraDao {
 
 	@Autowired
 	SkheraRepository skheraRepository;
-	
-	@Autowired
-	UserRepository userRepository;
 
 	public Skhera save(Skhera skhera) {
 		return skheraRepository.save(skhera);

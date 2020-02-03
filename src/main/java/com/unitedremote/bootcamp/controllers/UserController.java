@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,18 +18,13 @@ public class UserController {
 	@Autowired
 	UserDao userDao;
 	
-	@PostMapping("")
-	public User CreateUser(@RequestBody User user) {
-		return userDao.save(user);
-	}
-	
-	@GetMapping("")
+	@GetMapping("/")
 	public List<User> findAll() {
 		return userDao.findAll();
 	}
 	
-	@GetMapping("/{id}")
-	public User findOne(@PathVariable(value = "id") Long id) {
-		return userDao.findOne(id);
+	@GetMapping("/{userId}")
+	public User findOne(@PathVariable(value = "userId") Long userId) {
+		return userDao.findOne(userId);
 	}
 }
