@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +21,7 @@ public class User {
 	@Column
 	protected String name;
 	@Column
+	@Email
 	protected String email;
 
 	public User() {

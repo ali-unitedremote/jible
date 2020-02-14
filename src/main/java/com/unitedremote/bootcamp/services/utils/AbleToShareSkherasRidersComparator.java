@@ -1,4 +1,4 @@
-package com.unitedremote.bootcamp.services;
+package com.unitedremote.bootcamp.services.utils;
 
 import java.util.Comparator;
 
@@ -10,10 +10,10 @@ public class AbleToShareSkherasRidersComparator implements Comparator<RiderCompa
 	public int compare(RiderComparable rider1, RiderComparable rider2) {
         
         if (rider1.getTimeTo() != rider2.getTimeTo()){
-        	return (int) (rider1.getTimeTo() - rider2.getTimeTo());
+        	return rider1.getTimeTo() - rider2.getTimeTo();
         }
         else {
-        	return rider1.getFreedomDegree() - rider2.getFreedomDegree();
+        	return rider1.getOngoingSkheras() - rider2.getOngoingSkheras();
         }
     }
 

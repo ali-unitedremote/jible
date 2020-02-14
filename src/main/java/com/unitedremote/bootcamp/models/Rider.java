@@ -16,4 +16,13 @@ public class Rider extends User{
 		super(id, name, email);
 	}
 	
+	
+
+    public boolean equals(Rider anotherRider) {
+		if(anotherRider.getId() == this.getId()) {
+			return true;
+		}
+		else return false;
+	}
+	
 }

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -26,8 +28,12 @@ public class Skhera {
 	private Long id;
 	@Column
 	private String description;
+	@NotNull
 	@Column
 	private String items;
+	@Column
+	private int volume;
+	@Positive
 	@Column
 	private double estimated_price;
 	@Column
@@ -59,6 +65,13 @@ public class Skhera {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Customer customer;
 
+	public Skhera() {
+	}
+
+	public Skhera(boolean ableToShare) {
+		super();
+		this.ableToShare = ableToShare;
+	}
 	
 	//getters & Setters
 	public Long getId() {
@@ -78,6 +91,13 @@ public class Skhera {
 	}
 	public void setItems(String items) {
 		this.items = items;
+	}
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
 	public double getEstimated_price() {
 		return estimated_price;
