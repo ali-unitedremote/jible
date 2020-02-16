@@ -3,36 +3,18 @@ package com.unitedremote.bootcamp.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.unitedremote.bootcamp.models.Rider;
-import com.unitedremote.bootcamp.repositories.RiderRepository;
 
-@Service
-public class RiderDao {
+public interface RiderDao {
+
+	Rider save(Rider rider);
+
+	Optional<Rider> findOne(Long id);
+
+	Rider getOne(Long id);
 	
-	@Autowired
-	RiderRepository riderRepository;
+	List<Rider> findAll();
 	
-	public Rider save(Rider rider) {
-		return riderRepository.save(rider);
-	}
+	void delete(Rider rider);
 	
-	public List<Rider> findAll() {
-		return riderRepository.findAll();
-	}
-	
-	public Optional<Rider> findOne(Long id) {
-		return riderRepository.findById(id);
-	}
-	
-	public Rider getOne(Long id) {
-		Rider rider = riderRepository.getOne(id);
-		return rider;
-	}
-	
-	public void delete(Rider rider) {
-		riderRepository.delete(rider);
-	}
 }

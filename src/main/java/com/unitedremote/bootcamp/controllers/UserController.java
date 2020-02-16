@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unitedremote.bootcamp.dao.UserDao;
+import com.unitedremote.bootcamp.dao.UserDaoImpl;
 import com.unitedremote.bootcamp.models.User;
 
 @RestController
@@ -16,7 +16,7 @@ import com.unitedremote.bootcamp.models.User;
 public class UserController {
 
 	@Autowired
-	UserDao userDao;
+	UserDaoImpl userDao;
 	
 	@GetMapping("/")
 	public List<User> findAll() {

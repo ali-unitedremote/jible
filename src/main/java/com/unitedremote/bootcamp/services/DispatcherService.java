@@ -1,40 +1,31 @@
 package com.unitedremote.bootcamp.services;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Service;
-
 import com.unitedremote.bootcamp.models.Rider;
-import com.unitedremote.bootcamp.models.RiderComparable;
 import com.unitedremote.bootcamp.models.Skhera;
 import com.unitedremote.bootcamp.services.utils.AbleToShareSkherasRidersComparator;
 import com.unitedremote.bootcamp.services.utils.UnableToShareSkherasRidersComparator;
 
-@Service
-public class DispatcherService {
-	
-	private static Logger logger = LogManager.getLogger();
+public interface DispatcherService {
 
-	public Rider dispatchRiderToSkhera(Skhera skhera) {
-		
-		logger.info("dispatching a rider to skhera : " + skhera.getId() );
-		
-		int skheraVolume = skhera.getVolume();
-		List<RiderComparable> riders = new ArrayList<RiderComparable>();
-		RiderService riderService = new RiderService();
-		if (skhera.isAbleToShare()){
-			riders = riderService.getRiders(skheraVolume);
-			Collections.sort(riders, new AbleToShareSkherasRidersComparator());		
-		}
-		else{
-			riders = riderService.getFreeRiders(skheraVolume);
-			Collections.sort(riders, new UnableToShareSkherasRidersComparator());
-		}
-		return riders.get(0).getRider();
-	}
-	
+	/**
+	 *
+	 * <b> Assign a rider to a skhera, using a rider comparator</b>
+	 * 
+	 * <p>Selection criteria :</p>
+	 * <ul>
+	 * 	<li> Ability of a rider to be shared </li>
+	 *  <li> Ability of the skhera to be sahred </li>
+	 *  <li> Proximity of a rider to the skhera pickup address </li>
+	 *  <li> Number of ongoing skheras of a rider </li>
+	 *  <li> A rider Box available volume </li>
+	 * </ul>
+	 *
+	 * @param skhera
+	 * @return rider
+	 * 
+	 * @see AbleToShareSkherasRidersComparator
+	 * @see UnableToShareSkherasRidersComparator
+	 */
+	Rider dispatchRiderToSkhera(Skhera skhera);
+
 }

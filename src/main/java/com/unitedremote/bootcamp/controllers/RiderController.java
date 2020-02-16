@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unitedremote.bootcamp.models.Rider;
-import com.unitedremote.bootcamp.services.RiderService;
+import com.unitedremote.bootcamp.services.RiderServiceImpl;
 
 @RestController
 public class RiderController {
 	private static Logger logger = LogManager.getLogger();
 	
 	@Autowired
-	RiderService riderService;
+	RiderServiceImpl riderService;
 	
 	@GetMapping("/riders")
 	public List<Rider> findAll() {

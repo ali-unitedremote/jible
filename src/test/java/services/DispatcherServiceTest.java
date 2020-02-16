@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.unitedremote.bootcamp.models.Rider;
 import com.unitedremote.bootcamp.models.RiderComparable;
 import com.unitedremote.bootcamp.models.Skhera;
-import com.unitedremote.bootcamp.services.DispatcherService;
+import com.unitedremote.bootcamp.services.DispatcherServiceImpl;
 
 class DispatcherServiceTest {
 	
@@ -26,7 +26,7 @@ class DispatcherServiceTest {
 	@Test
 	void testDispatchRiderToSkhera() {
 		
-		DispatcherService dispatcher = new DispatcherService();
+		DispatcherServiceImpl dispatcher = new DispatcherServiceImpl();
 		Skhera skhera = new Skhera(true);
 		Rider rider = dispatcher.dispatchRiderToSkhera(skhera);
 
