@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import com.unitedremote.bootcamp.models.RiderComparable;
 
+/**
+ * According to this criteria: one comparable rider is "better" than another,
+ * if he has less ongoing skheras
+ *
+ */
 public class AbleToShareSkherasRidersComparator implements Comparator<RiderComparable> {	
 
 	@Override

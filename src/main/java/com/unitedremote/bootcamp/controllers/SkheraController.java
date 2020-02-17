@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.unitedremote.bootcamp.models.Rider;
 import com.unitedremote.bootcamp.models.Skhera;
-import com.unitedremote.bootcamp.services.DispatcherService;
+import com.unitedremote.bootcamp.services.DispatcherServiceImpl;
 import com.unitedremote.bootcamp.services.SkheraService;
 import com.unitedremote.bootcamp.services.utils.ErrorHandlingService;
 
@@ -31,7 +31,7 @@ public class SkheraController {
 	@Autowired
 	SkheraService skheraService;
 	@Autowired
-	DispatcherService dispatcherService;
+	DispatcherServiceImpl dispatcherService;
 	@Autowired
 	ErrorHandlingService errorHandlingService;
 	
@@ -49,6 +49,11 @@ public class SkheraController {
 		return skheraService.findOne(skheraId);
 	}
 	
+	/**
+	 * @param skhera
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping("")
 	public String createSkhera(@RequestBody @Valid Skhera skhera, BindingResult bindingResult){
 		logger.info("Creating skhera ...");

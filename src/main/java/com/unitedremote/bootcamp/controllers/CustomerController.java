@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unitedremote.bootcamp.dao.CustomerDao;
+import com.unitedremote.bootcamp.dao.CustomerDaoImpl;
 import com.unitedremote.bootcamp.models.Customer;
 
 @RestController
 public class CustomerController {
 	
 	@Autowired
-	CustomerDao customerDao;
+	CustomerDaoImpl customerDao;
 	
 	@PostMapping("/customers")
 	public Customer CreateCustomer(@RequestBody Customer customer) {

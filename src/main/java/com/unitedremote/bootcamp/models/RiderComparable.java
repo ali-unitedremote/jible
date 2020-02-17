@@ -1,5 +1,11 @@
 package com.unitedremote.bootcamp.models;
 
+
+/**
+ * An entity that permit to compare riders to choose the optimal one for a given skhera
+ * Besides a rider object, it adds some discriminating properties
+ *
+ */
 public class RiderComparable {
 	
 	private Rider rider;
